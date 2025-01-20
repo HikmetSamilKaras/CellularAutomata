@@ -2,12 +2,39 @@
 <html>
 <body>
 
-    <canvas id="canvas" width="auto" height="auto">
+    
+<script>
+    function paint(grid) {
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        
+        ctx.fillRect(0,0, 1000,1000);
+        for (let i = 0; i < 100; i++) {
+            for (let j = 0; j < 100; j++) {
+                if (grid[i][j] === 1) {
+                    ctx.fillStyle = "black";
+                    ctx.fillRect(i*10, j*10, 10, 10);
+                }
+            }
+        }
+        
+    }
+
+    grid = [];
+    for (let i = 0; i < 100; i++) {
+        grid.push([]);
+        for (let j = 0; j < 100; j++) {
+            grid[i].push(0);
+        }
+    }
+
+    grid[10][10] = 1;
+</script>
+
+
+    <canvas id="canvas" width="1000" height="1000">
         <script>
-            const canvas = document.getElementById("canvas");
-            const ctx = canvas.getContext("2d");
-            
-            ctx.fillRect(10,10, 150,100);
+            paint(grid);
         </script>
 
     
